@@ -12,6 +12,15 @@ using Real = System.Float;
 namespace UnitTestTensors
 // <- storage.type.module
 {
+    public interface IIndexable<T, Type>
+//           ^ storage.type.class.interface
+//                    ^ entity.name.class
+//                             ^ punctuation.definition.parameters.type
+//                                     ^ punctuation.definition.parameters.type
+    {
+        Type this[params T[] indices] { get; set; }
+    }
+
     struct SimpleStruct
     {
         private int xval;
@@ -29,7 +38,12 @@ namespace UnitTestTensors
         }
         public void DisplayX()
         {
-            Console.WriteLine("The stored value is: {0}", xval);
+            if (forceCopy && Flags == 0)
+                return new Array<Type>(shape, Values.CopyToNew());
+//                      ^ keyword.operator.new
+            else if (Flags == 0)
+//           ^ keyword.control.conditional
+                return new Array<Type>(shape, this.Values);
         }
 
         public IEnumerable<string> Sql(IEnumerable<int> l)
@@ -85,12 +99,21 @@ namespace UnitTestTensors
             Assert.AreEqual(3, a[-1]);
         }
 
+        public interface IIndexable<T, Type>
+        {
+            Type this[params T[] indices] { get; set; }
+        }
+
+
         ///<summary>
         ///</summary>
 
         [TestMethod]
         public void TestSliceLastCol()
         {
+            var x = new[] { n, m, l, o };
+//                      ^ support.type.cs
+//                        ^ punctuation.definition.array.begin.cs
             var a = Array<float>.Diag(0, 1, 2, 3);
             a[0, 3] = -1;
             var b = Array<float>.Vector(-1, 0, 0, 3);

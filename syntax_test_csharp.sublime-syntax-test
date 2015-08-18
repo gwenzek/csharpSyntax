@@ -48,6 +48,12 @@ namespace UnitTestTensors
 
         public IEnumerable<string> Sql(IEnumerable<int> l)
         {
+            this[1];
+//           ^ support.variable.cs
+//              ^ punctuation.definition.accessor.begin.cs
+            var x = l.Count() > 0 ? l.Count() + 1 : -1;
+//                                ^ keyword.operator.ternary.cs
+//                                            ^ keyword.operator
             return from l select $"{l}";
 //                  ^ support.function
 //                          ^ support.function

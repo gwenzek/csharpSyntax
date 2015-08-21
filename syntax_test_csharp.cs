@@ -58,6 +58,22 @@ namespace UnitTestTensors
 //                  ^ support.function
 //                          ^ support.function
         }
+
+        public void TryCatch(string foo)
+        {
+            try
+            {
+                if(foo == null) throw new NullPointerException();
+            }
+            catch
+//           ^ keyword.control.trycatch.catch
+            {
+                return;
+            }
+        }
+
+        public void Covariant<in T>(T foo);
+//                             ^ storage.modifier.cs
     }
 
     public enum Range : long { Max = 2147483648L, Min = 255L };
@@ -127,6 +143,10 @@ namespace UnitTestTensors
             int a;
             int a = 1;
             Assert.IsTrue(c.Equals(b));
+            x.@.y;
+//            ^ -variable.other.cs
+            x.@params.y;
+//              ^ variable.other.cs
 
             for(int<a> i = 0; i < 10; ++i)
             {

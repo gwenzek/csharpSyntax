@@ -26,12 +26,19 @@ namespace YourNamespace
     {
     }
 
-    delegate int YourDelegate(a);
+    delegate int YourDelegate(int a);
+///  ^ storage.type.type.delegate
+///           ^ support.type
+///                  ^ entity.name.function.type
+///                            ^ support.type
+///                               ^ variable.parameter
 
     enum YourEnum
 /// ^ storage.type.class.enum
 ///        ^ entity.name.class.enum
     {
+        A, B
+///     ^ constant.enum
     }
 
     namespace YourNestedNamespace

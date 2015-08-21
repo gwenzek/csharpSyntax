@@ -5,7 +5,7 @@
 using System;
 ///<- storage.type.module.import
 ///    ^ variable.module
-///         ^ punctuation.terminator
+///         ^ punctuation.definition.module.end
 
 namespace HelloWorld
 ///<- storage.type.module

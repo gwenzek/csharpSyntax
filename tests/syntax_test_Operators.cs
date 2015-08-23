@@ -18,16 +18,18 @@ int? count = customers?[0]?.Orders?.Count();
 A?.B?.C?[0] ?? E;
 /// ^ keyword.operator.accessor
 ///     ^ punctuation.definition.accessor
-///         ^ keyword.operator
+///         ^ keyword.operator.cs
 A?.B?.C?[0] == E;
-///         ^ keyword.operator
+///         ^ keyword.operator.cs
      x->y;
-///    ^ keyword.operator
+///    ^ keyword.operator.cs
     (*x).y;
-///  ^ keyword.operator
+///  ^ keyword.operator.cs
     x >>= y
-///   ^ keyword.operator
+///   ^ keyword.operator.cs
     x = x >> y
 ///   ^ keyword.operator.assignment
-///       ^ keyword.operator
-
+///       ^ keyword.operator.cs
+condition ? first_expression : second_expression;
+///       ^ keyword.operator.ternary.cs
+///                          ^ keyword.operator.ternary.cs

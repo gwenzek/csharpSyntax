@@ -9,13 +9,13 @@ using System;
 #pragma pragma-name pragma-arguments
 #pragma warning disable warning-list
 #pragma warning restore warning-list
+#pragma checksum "file.cs" "{3673e4ca-6098-4ec1-890f-8fceb2a794a2}" "{012345678AB}" // New checksum
 
 #region MyClass definition
 public class MyClass
 {
     static void Main()
     {
-#pragma checksum "file.cs" "{3673e4ca-6098-4ec1-890f-8fceb2a794a2}" "{012345678AB}" // New checksum
 #if (DEBUG && !MYTEST)
         Console.WriteLine("DEBUG is defined");
 #elif (!DEBUG && MYTEST)

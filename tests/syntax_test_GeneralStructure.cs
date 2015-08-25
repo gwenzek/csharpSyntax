@@ -61,6 +61,11 @@ namespace YourNamespace
             //Your program starts here...
         }
 ///     ^ punctuation.section.function
+
+        public void MethodWith1Default(int max, string path = null) { }
+///                                              ^ support.type.cs
+        public void MethodWith2Default(int max = -1, string path = null){ }
+///                                                     ^ support.type.cs
     }
 /// ^ punctuation.section.class
 }

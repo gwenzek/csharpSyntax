@@ -13,6 +13,11 @@ using Project = PC.MyCompany.Project;
 /// <- storage.type.module.import.cs
 ///    ^ entity.name.type
 ///           ^ storage.modifier.module.as
+using Wrapped = PC.MyCompany.Project.Wrapper<float>;
+/// <- storage.type.module.import.cs
+///    ^ entity.name.type
+///           ^ storage.modifier.module.as
+///                                            ^ support.type.cs
 
 class Foo {
 

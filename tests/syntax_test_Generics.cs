@@ -15,13 +15,16 @@ List<List<List<int>>> lll;
 ///         ^ variable.other.type
 ///             ^ support.type
 ///                    ^ entity.name.variable
-     l = 1;
+     x = 1;
 ///  ^ variable.other.cs
-     int l = 1;
-///  ^ variable.other.type
+     int x = 1;
+///  ^ support.type
 ///      ^ entity.name.variable
-     int l1 = 1, l2 = 2;
-///  ^ variable.other.type
+     int x1 = 1, x2 = 2;
+///  ^ support.type
 ///      ^ entity.name.variable
 ///               ^ entity.name.variable
 
+     foo<int>(a)
+///   ^ variable.function
+///       ^ support.type

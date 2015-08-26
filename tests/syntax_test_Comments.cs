@@ -36,18 +36,5 @@ namespace HelloWorld
             double[] b, int offsetb, int ldb,
             double beta,
             double[] c, int offsetc, int ldc);
-
-        public void dcsrmm(double[] val, int offsetval, int[] indx, int offsetindx, int[] pntrb, int offsetpntrb, double[] b, int offsetb, int ldb, double beta, double[] c, int offsetc, int ldc)
-        {
-            fixed (double* valp = &val[offsetval], bp = &b[offsetb], cp = &c[offsetc])
-//*          ^ keyword.control.other.fixed
-//*               ^ punctuation.definition.expression.other
-//*                  ^ support.type
-            fixed (int* indxp = &indx[offsetindx], cp = &c[offsetc])
-//*         ^ keyword.control.other.fixed
-            {
-                cblas_dcsrmm(valp, indxp, pntrbp, bp, ldb, beta, cp, ldc);
-            }
-        }
     }
 }

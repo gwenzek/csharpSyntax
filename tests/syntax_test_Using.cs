@@ -73,3 +73,25 @@ class Foo {
         }
     }
 }
+
+
+[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+///  ^ support.module.cs
+///    ^ keyword.operator.accessor.module.cs
+internal sealed partial class Test : global::System.Configuration.ApplicationSettingsBase {
+///                                    ^ support.module.cs
+///                                         ^ keyword.operator.accessor.module.cs
+
+    private static Test defaultInstance = ((Test)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Test())));
+///                                                ^ support.module.cs
+///                                                      ^ keyword.operator.accessor.module.cs
+
+    public static Test Default {
+        [Tag]
+///       ^ entity.name.tag
+        get {
+///       ^ storage.type.function.accessor.get.cs
+            return defaultInstance;
+        }
+    }
+}

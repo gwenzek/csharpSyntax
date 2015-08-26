@@ -25,6 +25,11 @@ List<List<List<int>>> lll;
 ///      ^ entity.name.variable
 ///               ^ entity.name.variable
 
-     foo<int>(a)
+     foo<int>(a);
 ///   ^ variable.function
 ///       ^ support.type
+
+Foo.List<a> l;
+///         ^ entity.name.variable
+Foo.l + 1;
+/// ^ variable.other

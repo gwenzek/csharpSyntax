@@ -12,6 +12,19 @@ namespace YourNamespace
 /// ^ storage.type.class.class
 ///        ^ entity.name.class.class
     {
+        Int x;
+///      ^ variable.other.type.return.cs
+///         ^ entity.name.variable.cs
+
+        public Int YourProperty {
+///             ^ variable.other.type.return.cs
+///                  ^ entity.name.variable.property.cs
+            get {return x;}
+///          ^ storage.type.function.accessor.get.cs
+            set {x = value;}
+///          ^ storage.type.function.accessor.set.cs
+///                    ^ variable.language
+        }
     }
 
     struct YourStruct

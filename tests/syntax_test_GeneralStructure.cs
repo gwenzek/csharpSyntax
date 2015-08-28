@@ -72,6 +72,12 @@ namespace YourNamespace
         static void Main(string[] args)
         {
             //Your program starts here...
+            var f = 1e-3f;
+///                  ^ constant.numeric.cs
+///                     ^ constant.numeric.cs
+            var l = 11545L;
+///                  ^ constant.numeric.cs
+///                      ^ constant.numeric.cs
         }
 ///     ^ punctuation.section.function
 

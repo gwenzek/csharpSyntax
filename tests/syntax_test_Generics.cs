@@ -33,3 +33,6 @@ Foo.List<a> l;
 ///         ^ entity.name.variable
 Foo.l + 1;
 /// ^ variable.other
+Foo<a>.List l;
+///     ^ variable.other.type
+///         ^ entity.name.variable

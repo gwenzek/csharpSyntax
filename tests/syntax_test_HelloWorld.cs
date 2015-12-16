@@ -3,7 +3,7 @@
 // A Hello World! program in C#.
 ///<- comment.line
 using System;
-///<- storage.type.module.import
+///<- keyword.control.import
 ///    ^ variable.module
 ///         ^ punctuation.definition.module.end
 

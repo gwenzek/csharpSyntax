@@ -65,6 +65,7 @@ namespace UnitTestTensors
             {
                 if(foo == null) throw new NullPointerException();
             }
+//          ^ punctuation.section.trycatch
             catch
 //           ^ keyword.control.trycatch.catch
             {

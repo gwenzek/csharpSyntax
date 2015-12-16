@@ -25,6 +25,16 @@ namespace YourNamespace
 ///          ^ storage.type.function.accessor.set.cs
 ///                    ^ variable.language
         }
+
+        public bool IsConst(Type value) => this is Const && (this as Const).Value.Equals(value);
+///                                     ^ punctuation.section.function.begin.cs
+///                                              ^ keyword.operator.reflexion.cs
+///                                                      ^ keyword.operator
+///                                                               ^ keyword.operator.reflexion.cs
+        public bool IsZero => IsConst(Numeric<Type>.Zero);
+///                  ^ entity.name.variable.property.cs
+///                        ^ storage.type.function.accessor.get.cs
+///                         ^ storage.type.function.accessor.get.cs
     }
 
     struct YourStruct
@@ -51,7 +61,7 @@ namespace YourNamespace
 ///        ^ entity.name.class.enum
     {
         A, B
-///     ^ constant.enum
+///     ^ constant.numeric.enum
     }
 
     namespace YourNestedNamespace
@@ -78,6 +88,9 @@ namespace YourNamespace
             var l = 11545L;
 ///                  ^ constant.numeric.cs
 ///                      ^ constant.numeric.cs
+            int x = 1, y = 0f;
+///          ^ support.type.cs
+///               ^ keyword.operator.assignment
         }
 ///     ^ punctuation.section.function
 
@@ -85,6 +98,9 @@ namespace YourNamespace
 ///                                              ^ support.type.cs
         public void MethodWith2Default(int max = -1, string path = null){ }
 ///                                                     ^ support.type.cs
+
+        public void MethodWithTypeParam<T>(){}
+///                                     ^ variable.parameter.type.cs
     }
 /// ^ punctuation.section.class
 }

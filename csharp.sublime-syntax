@@ -152,10 +152,10 @@ contexts:
       scope: invalid.illegal.unexpected.closing-bracket
 
     - match: '\{'
-      scope: punctuation.section.block.begin.cs
+      scope: punctuation.section.begin.cs
       push:
         - match: '\}'
-          scope: punctuation.section.block.end.cs
+          scope: punctuation.section.end.cs
           pop: true
         - include: main
 
@@ -176,13 +176,13 @@ contexts:
   using:
     - match: '\b(using)\s+{{name}}\s*(=)\s*'
       captures:
-        1: storage.type.module.import.cs
+        1: keyword.control.import.cs
         2: entity.name.type.cs
         3: storage.modifier.module.as.cs
       push: using_namespace
     - match: '\b(using)\s+(static\b)?\s*{{name}}'
       captures:
-        1: storage.type.module.import.cs
+        1: keyword.control.import.cs
         2: storage.modifier.module.cs
         3: variable.module.cs
       push: using_namespace
@@ -262,7 +262,7 @@ contexts:
                 - match: '(?=\S)'
                   pop: true
             - match: '{{name}}'
-              scope: constant.enum.cs
+              scope: constant.numeric.enum.cs
             - match: '='
               scope: keyword.operator.assignment.cs
               push: line_of_code_in
@@ -318,10 +318,10 @@ contexts:
         # - include: member_declaration
         - include: method_declaration
         - match: '\{'
-          scope: punctuation.section.block.begin.cs
+          scope: punctuation.section.begin.cs
           push:
             - match: '\}'
-              scope: punctuation.section.block.end.cs
+              scope: punctuation.section.end.cs
               pop: true
             - include: class_body
     - match: \S*
@@ -482,6 +482,11 @@ contexts:
         2: entity.name.function.cs
         3: punctuation.definition.parameters.begin.cs
       set: [method_body, method_params]
+    - match: '{{name}}\s*(=>)\s*'
+      captures:
+        1: entity.name.variable.property.cs
+        2: storage.type.function.accessor.get.cs
+      set: line_of_code_in
     - match: '{{name}}\s*(=)\s*'
       captures:
         1: entity.name.variable.cs
@@ -814,7 +819,7 @@ contexts:
 
     - match: '\b(as|is)\b'
       scope: keyword.operator.reflexion.cs
-      push: type
+      push: type_no_space
 
     - match: \b(checked|unchecked)\b
       scope: keyword.other.cs
@@ -983,10 +988,10 @@ contexts:
           scope: punctuation.separator.expression.cs
         - include: line_of_code_in
     - match: \{
-      scope: punctuation.section.block.begin.cs
+      scope: punctuation.section.begin.cs
       push:
         - match: \}
-          scope: punctuation.section.block.end.cs
+          scope: punctuation.section.end.cs
           pop: true
         - include: code_block_in
     - match: ';'
@@ -1069,12 +1074,14 @@ contexts:
       scope: storage.modifier.cs
     - match: ','
       scope: punctuation.separator.type.cs
-    - match: '(>)(\[,*\])*'
+    - match: '(>)'
       captures:
         1: punctuation.definition.parameters.type.end.cs
-        2: support.type.cs
       pop: true
-    - include: type
+    - match: '{{name}}'
+      scope: variable.parameter.type.cs
+    - match: '(?=\{\}\[\];)'
+      pop: true
 
   type_no_space:
     - meta_scope: debug.type_no_space
@@ -1161,10 +1168,10 @@ contexts:
 
   try_block:
     - match: \{
-      scope: punctuation.section.block.trycatch.begin.cs
+      scope: punctuation.section.trycatch.begin.cs
       set:
         - match: \}
-          scope: punctuation.section.block.trycatch.end.cs
+          scope: punctuation.section.trycatch.end.cs
           pop: true
         - include: main
     - match: (?=\S)
@@ -1201,11 +1208,11 @@ contexts:
   trycatch_block:
     - meta_scope: meta.block.trycatch.cs
     - match: \{
-      scope: punctuation.section.block.trycatch.begin.cs
+      scope: punctuation.section.trycatch.begin.cs
       set:
         - meta_scope: meta.block.trycatch.cs
         - match: \}
-          scope: punctuation.section.block.trycatch.end.cs
+          scope: punctuation.section.trycatch.end.cs
           pop: true
         - include: code_block_in
     - match: \S

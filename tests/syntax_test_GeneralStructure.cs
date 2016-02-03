@@ -62,8 +62,8 @@ namespace YourNamespace
     {
         A, B
 ///     ^ constant.numeric.enum
-    }
-
+    };
+//   ^ punctuation.terminator
     namespace YourNestedNamespace
 ///     ^ storage.type.module
 ///             ^ entity.name.module
@@ -74,6 +74,17 @@ namespace YourNamespace
         {
         }
     }
+
+    class InheritingSomething: IYourInterface
+    {
+    }
+
+    class WithGeneric<T1, T2> where T1: IEnumerable<T2> {}
+///                  ^ punctuation.definition.parameters.type
+///                     ^ punctuation.separator.type
+///                         ^ punctuation.definition.parameters.type
+///                             ^ storage.modifier
+///                                         ^ entity.other.inherited-class
 
     class YourMainClass
 ///   ^ storage.type.class.class
@@ -88,19 +99,30 @@ namespace YourNamespace
             var l = 11545L;
 ///                  ^ constant.numeric.cs
 ///                      ^ constant.numeric.cs
+            var d = 11545D;
+///                  ^ constant.numeric.cs
+///                      ^ constant.numeric.cs
             int x = 1, y = 0f;
 ///          ^ support.type.cs
 ///               ^ keyword.operator.assignment
+            value = x;
         }
 ///     ^ punctuation.section.function
 
-        public void MethodWith1Default(int max, string path = null) { }
+        private void MethodWith1Default(int max, string path = null) { }
+///        ^ storage.modifier
 ///                                              ^ support.type.cs
-        public void MethodWith2Default(int max = -1, string path = null){ }
+
+        internal void MethodWith2Default(int max = -1, string path = null){ }
+///        ^ storage.modifier
 ///                                                     ^ support.type.cs
 
-        public void MethodWithTypeParam<T>(){}
-///                                     ^ variable.parameter.type.cs
+        partial void MethodWithTypeParam<T>(){}
+///        ^ storage.modifier
+///                                     ^ punctuation.definition.parameters.type
+///                                      ^ variable.parameter.type.cs
+
+        List<List<List<List<float>>>>  reallyNestedTypes;
     }
 /// ^ punctuation.section.class
 }

@@ -40,7 +40,7 @@ namespace UnitTestTensors
         {
             if (forceCopy && Flags == 0)
                 return new Array<Type>(shape, Values.CopyToNew());
-//                      ^ keyword.operator.new
+//                      ^ keyword.declaration.new
             else if (Flags == 0)
 //           ^ keyword.control.conditional
                 return new Array<Type>(shape, this.Values);

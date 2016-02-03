@@ -1,20 +1,20 @@
 /// SYNTAX TEST "Packages/User/csharpSyntax/csharp.sublime-syntax"
 using System.Text;
-/// <- keyword.control.import
+/// <- keyword.control.import.cs
 ///    ^ variable.module.cs
 ///         ^ punctuation.separator.module.cs
 ///            ^ variable.module.cs
 ///              ^ punctuation.definition.module.end
 using static System.Math.Foo;
-/// <- keyword.control.import
+/// <- keyword.control.import.cs
 ///      ^ storage.modifier.module.cs
 ///                  ^ variable.module.cs
 using Project = PC.MyCompany.Project;
-/// <- keyword.control.import
+/// <- keyword.control.import.cs
 ///    ^ entity.name.type
 ///           ^ storage.modifier.module.as
 using Wrapped = PC.MyCompany.Project.Wrapper<float>;
-/// <- keyword.control.import
+/// <- keyword.control.import.cs
 ///    ^ entity.name.type
 ///           ^ storage.modifier.module.as
 ///                                            ^ support.type.cs

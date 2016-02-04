@@ -21,3 +21,8 @@ The syntax should appear in the `Set syntax:` list under the name `C sharp, C#`
 # Tests:
 The tests folder include some tests, that should allow you to see the new syntax in action.
 If you find a bug, don't hesitate to create a new test that highlight it.
+
+# Comparaison
+
+Here is a gif showing the differences between the 'old' syntax and mine: 
+![Differences between 'old' syntax and mine](https://github.com/gwenzek/csharpSyntax/blob/master/differences.gif)

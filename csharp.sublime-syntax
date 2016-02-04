@@ -1,5 +1,8 @@
 %YAML 1.2
 ---
+# http://www.sublimetext.com/docs/3/syntax.html
+# https://github.com/gwenzek/csharpSyntax
+
 name: C sharp C#
 file_extensions: [.cs]
 scope: source.cs

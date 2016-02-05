@@ -10,7 +10,7 @@ scope: source.cs
 
 variables:
 
-  bin_op: '(?:\+|->|-|\*|/|%|\|\||&&|\||&|\^|<<|>>|=>|<=|<|>=|>|==|\?\?)'
+  bin_op: '(?:\+|->|-|\*|/|%|\|\||&&|\||&|\^|<<|>>|=>|<=|<|>=|>|==|!=|\?\?)'
   unary_op: '(?:\+\+|--|-|~|!|&|\*)'
   # name: '[A-Za-z_\p{L}][A-Za-z\p{L}_0-9]*'
 
@@ -645,7 +645,7 @@ contexts:
 
     - match: \b(switch)\b
       captures:
-        1: keyword.control.conditional.if.cs
+        1: keyword.control.conditional.switch.cs
       set: [switch_block, if_condition]
 
     - match: \b(for)\s*(\()

@@ -638,12 +638,12 @@ contexts:
 
   line_of_code:
     # language keywords
-    - match: \b(if)\s*
+    - match: \b(if)\b
       captures:
         1: keyword.control.conditional.if.cs
       set: [else_block, if_block, if_condition]
 
-    - match: \b(switch)\s*
+    - match: \b(switch)\b
       captures:
         1: keyword.control.conditional.if.cs
       set: [switch_block, if_condition]
@@ -1272,15 +1272,17 @@ contexts:
     # - include: line_of_code
 
   if_condition:
-    - match: '\('
-      scope: punctuation.definition.expression.conditional.end.cs
+    - match: '\s*(\()'
+      captures:
+        1: punctuation.definition.expression.conditional.end.cs
       set:
         - meta_scope: meta.if.condition
-        - match: '\)'
-          scope: punctuation.definition.expression.conditional.end.cs
+        - match: '\s*(\))'
+          captures:
+            1: punctuation.definition.expression.conditional.end.cs
           pop: true
         - include: line_of_code_in
-    - match: (\s*)(?=\S)
+    - match: (\s*)(?=[^(])
       scope: invalid.illegal.expected.condition
       pop: true
 

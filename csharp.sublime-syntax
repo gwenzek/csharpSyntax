@@ -76,6 +76,8 @@ contexts:
   comments_in:
     - match: \b(?i:todo|hack|xxx)\b
       scope: comment.line.todo
+    - match: \b(https?://.*)\b
+      scope: markup.underline.link.cs
 
   git_merge:
     - match: '^(<<<<<<<).*$'
@@ -115,10 +117,10 @@ contexts:
     - match: '(region)\s*'
       scope: entity.name.tag.cs
       push:
-        - meta_content_scope: meta.toc-list.region comment.line.cs
         - include: comments
         - match: $
           pop: true
+
     - match: '(line)\s+(default|hidden)'
       captures:
         1: entity.name.tag.cs
@@ -505,7 +507,7 @@ contexts:
         1: entity.name.variable.cs
         2: punctuation.terminator.statement.cs;
       pop: true
-    - match: '{{name}}(<)(?=.*>\.)'
+    - match: '{{name}}(<)(?=[^(]*>\.)'
       captures:
         1: entity.other.inherited-class.cs
         2: punctuation.definition.parameters.type.begin.cs
@@ -576,6 +578,11 @@ contexts:
     - match: \s
       pop: true
     - include: type
+    - match: \s*(\[)(.*)(\])\s*
+      captures:
+        1: punctuation
+        2: entity.name.tag
+        3: punctuation
 
   method_accessor:
     - meta_scope: meta.method.property.cs

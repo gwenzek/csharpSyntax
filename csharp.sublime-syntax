@@ -136,12 +136,12 @@ contexts:
       captures:
         1: entity.name.tag.cs
         2: string.quoted.double.cs
-        3: punctuation.definition.hash.begin.cs
+        3: punctuation.definition.value.begin.cs
         4: constant.numeric.cs
-        5: punctuation.definition.hash.begin.cs
-        6: punctuation.definition.hash.begin.cs
+        5: punctuation.definition.value.end.cs
+        6: punctuation.definition.value.begin.cs
         7: constant.numeric.cs
-        8: punctuation.definition.hash.begin.cs
+        8: punctuation.definition.value.end.cs
       push: option_done
 
     - match: 'pragma.*'
@@ -564,7 +564,7 @@ contexts:
     - match: '{{name}}'
       scope: variable.parameter.cs
     - match: '='
-      scope: punctuation.separator.definition.default-value.cs
+      scope: punctuation.separator.key-value.parameter.cs
       push: line_of_code_in
     - match: ','
       scope: punctuation.separator.parameter.function.cs
@@ -1031,7 +1031,7 @@ contexts:
   accessor_arguments:
     - match: '{{name}}\s*(:)'
       captures:
-        1: variable.other.parameter.cs
+        1: variable.parameter.cs
         2: punctuation.separator.key-value.parameter.cs
     - match: ','
       scope: punctuation.separator.accessor.cs

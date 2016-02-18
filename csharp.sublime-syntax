@@ -136,12 +136,12 @@ contexts:
       captures:
         1: entity.name.tag.cs
         2: string.quoted.double.cs
-        3: punctuation.definition.value.begin.cs
+        3: punctuation.definition.hash.begin.cs
         4: constant.numeric.cs
-        5: punctuation.definition.value.end.cs
-        6: punctuation.definition.value.begin.cs
+        5: punctuation.definition.hash.begin.cs
+        6: punctuation.definition.hash.begin.cs
         7: constant.numeric.cs
-        8: punctuation.definition.value.end.cs
+        8: punctuation.definition.hash.begin.cs
       push: option_done
 
     - match: 'pragma.*'
@@ -221,7 +221,7 @@ contexts:
 
   namespace_declaration:
     # package declaration
-    - match: '\b(namespace)\s+(?:{{name}}(\.))*{{name}}'
+    - match: '\b(namespace)\b'
       captures:
         0: meta.package.identifier.cs
         1: storage.type.module
@@ -229,6 +229,10 @@ contexts:
         3: keyword.operator.accessor.cs
         4: entity.name.module.cs
       push:
+        - match: '{{name}}'
+          scope: entity.name.module.cs
+        - match: \.
+          scope: punctuation.separator.module.cs
         - match: \{
           scope: punctuation.section.module.begin.cs
           set:
@@ -564,7 +568,7 @@ contexts:
     - match: '{{name}}'
       scope: variable.parameter.cs
     - match: '='
-      scope: punctuation.separator.key-value.parameter.cs
+      scope: punctuation.separator.definition.default-value.cs
       push: line_of_code_in
     - match: ','
       scope: punctuation.separator.parameter.function.cs
@@ -645,7 +649,7 @@ contexts:
 
     - match: \b(switch)\b
       captures:
-        1: keyword.control.conditional.switch.cs
+        1: keyword.control.conditional.if.cs
       set: [switch_block, if_condition]
 
     - match: \b(for)\s*(\()
@@ -1001,7 +1005,7 @@ contexts:
         - include: line_of_code_in
     - match: \{
       scope: punctuation.section.block.begin.cs
-      push:
+      set:
         - match: \}
           scope: punctuation.section.block.end.cs
           pop: true
@@ -1031,7 +1035,7 @@ contexts:
   accessor_arguments:
     - match: '{{name}}\s*(:)'
       captures:
-        1: variable.parameter.cs
+        1: variable.other.parameter.cs
         2: punctuation.separator.key-value.parameter.cs
     - match: ','
       scope: punctuation.separator.accessor.cs

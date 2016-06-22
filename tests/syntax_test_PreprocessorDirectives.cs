@@ -1,4 +1,4 @@
-/// SYNTAX TEST "Packages/User/csharpSyntax/csharp.sublime-syntax"
+/// SYNTAX TEST "Packages/C#/C#.sublime-syntax"
 
 // preprocessor_if.cs
 #define DEBUG
@@ -32,6 +32,9 @@ public class MyClass
 #endif
 
 #line 200 "Special"
+/// ^ meta.preprocessor entity.name.tag
+///   ^^^ constant.numeric
+///       ^^^^^^^^^ string
         int i;    // CS0168 on line 200
         int j;    // CS0168 on line 201
 #line default

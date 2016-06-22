@@ -1,16 +1,16 @@
-/// SYNTAX TEST "Packages/User/csharpSyntax/csharp.sublime-syntax"
+/// SYNTAX TEST "Packages/C#/C#.sublime-syntax"
 
 // A skeleton of a C# program
 using System;
 
 namespace YourNamespace
-///<- storage.type.module
-///        ^ entity.name.module
+///<- storage.type.namespace
+///        ^ entity.name.namespace
 {
-///<- punctuation.section.module
+///<- punctuation.section.namespace
     class YourClass
 /// ^ storage.type.class.class
-///        ^ entity.name.class.class
+///        ^ entity.name.type.class
     {
         Int x;
 ///      ^ variable.other.type.return.cs
@@ -28,24 +28,31 @@ namespace YourNamespace
 
         public bool IsConst(Type value) => this is Const && (this as Const).Value.Equals(value);
 ///                                     ^ punctuation.section.function.begin.cs
-///                                              ^ keyword.operator.reflexion.cs
+///                                              ^ keyword.operator.reflection.cs
 ///                                                      ^ keyword.operator
-///                                                               ^ keyword.operator.reflexion.cs
+///                                                               ^ keyword.operator.reflection.cs
         public bool IsZero => IsConst(Numeric<Type>.Zero);
 ///                  ^ entity.name.variable.property.cs
 ///                        ^ storage.type.function.accessor.get.cs
 ///                         ^ storage.type.function.accessor.get.cs
+
+        public bool InlineProperty {get; private set; } = false;
+///                                 ^^^ storage.type.function.accessor.get
+///                                      ^^^^^^^ storage.modifier.access
+///                                              ^^^ storage.type.function.accessor.set
+///                                                     ^ keyword.operator.assignment
+///                                                       ^^^^^ constant.language
     }
 
     struct YourStruct
 /// ^ storage.type.class.struct
-///         ^ entity.name.class.struct
+///         ^ entity.name.type.struct
     {
     }
 
     interface IYourInterface
 /// ^ storage.type.class.interface
-///           ^ entity.name.class.interface
+///           ^ entity.name.type.interface
     {
     }
 
@@ -58,19 +65,19 @@ namespace YourNamespace
 
     enum YourEnum
 /// ^ storage.type.class.enum
-///        ^ entity.name.class.enum
+///        ^ entity.name.type.enum
     {
         A, B
 ///     ^ constant.numeric.enum
     };
 //   ^ punctuation.terminator
     namespace YourNestedNamespace
-///     ^ storage.type.module
-///             ^ entity.name.module
+///     ^ storage.type.namespace
+///             ^ entity.name.namespace
     {
         struct YourStruct
 ///      ^ storage.type.class.struct
-///              ^ entity.name.class.struct
+///              ^ entity.name.type.struct
         {
         }
     }
@@ -88,7 +95,7 @@ namespace YourNamespace
 
     class YourMainClass
 ///   ^ storage.type.class.class
-///          ^ entity.name.class.class
+///          ^ entity.name.type.class
     {
         static void Main(string[] args)
         {
@@ -132,8 +139,23 @@ namespace YourNamespace
 ///                                      ^ variable.parameter.type.cs
 
         List<List<List<List<float>>>>  reallyNestedTypes;
+///                    ^^^^ variable.other.type
+///                         ^^^^^ support.type
+
+        IEnumerable<int>.GetEnumerator()
+///                      ^^^^ entity.name.function
+        {
+            yield return 7;
+            yield return 42;
+            yield return 314;
+        }
+
+        IEnumerable<int>.this[int key]{ get; set; }
+///                      ^^^^ variable.language
+///                               ^^^ variable.parameter
+
     }
 /// ^ punctuation.section.class
 }
-///<- punctuation.section.module
+///<- punctuation.section.namespace
 

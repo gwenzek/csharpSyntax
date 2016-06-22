@@ -1,27 +1,31 @@
-/// SYNTAX TEST "Packages/User/csharpSyntax/csharp.sublime-syntax"
+/// SYNTAX TEST "Packages/C#/C#.sublime-syntax"
 using System.Text;
 /// <- keyword.control.import.cs
-///    ^ variable.module.cs
-///         ^ punctuation.separator.module.cs
-///            ^ variable.module.cs
-///              ^ punctuation.definition.module.end
+///    ^ variable.namespace.cs
+///         ^ punctuation.separator.namespace.cs
+///            ^ variable.namespace.cs
+///              ^ punctuation.definition.namespace.end
 using static System.Math.Foo;
 /// <- keyword.control.import.cs
-///      ^ storage.modifier.module.cs
-///                  ^ variable.module.cs
+///      ^ storage.modifier.namespace.cs
+///                  ^ variable.namespace.cs
 using Project = PC.MyCompany.Project;
 /// <- keyword.control.import.cs
 ///    ^ entity.name.type
-///           ^ storage.modifier.module.as
+///           ^ storage.modifier.namespace.as
 using Wrapped = PC.MyCompany.Project.Wrapper<float>;
 /// <- keyword.control.import.cs
 ///    ^ entity.name.type
-///           ^ storage.modifier.module.as
+///           ^ storage.modifier.namespace.as
 ///                                            ^ support.type.cs
 
 class Foo {
 
-    static void UsingFont()
+    static void UsingFont([Usage("help text")] string x)
+///                        ^^^^^ entity.name.tag
+///                                  ^ string
+///                                              ^ support.type
+///                                                   ^ variable.parameter
     {
         using (Font font3 = new Font("Arial", 10.0f))
 ///     ^ keyword.control.other.using.cs
@@ -33,8 +37,8 @@ class Foo {
 ///     ^ punctuation.section.other
             // Use font3
             global::System.Console.WriteLine("foo");
-///         ^ support.module.cs
-///               ^ keyword.operator.accessor.module.cs
+///         ^ support.namespace.cs
+///               ^ punctuation.accessor.double-colon
         }
 ///     ^ punctuation.section.other
 
@@ -76,15 +80,15 @@ class Foo {
 
 
 [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-///  ^ support.module.cs
-///    ^ keyword.operator.accessor.module.cs
+///  ^ support.namespace.cs
+///    ^^ punctuation.accessor.double-colon
 internal sealed partial class Test : global::System.Configuration.ApplicationSettingsBase {
-///                                    ^ support.module.cs
-///                                         ^ keyword.operator.accessor.module.cs
+///                                    ^ support.namespace.cs
+///                                        ^^ punctuation.accessor.double-colon
 
     private static Test defaultInstance = ((Test)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Test())));
-///                                                ^ support.module.cs
-///                                                      ^ keyword.operator.accessor.module.cs
+///                                                ^ support.namespace.cs
+///                                                     ^^ punctuation.accessor.double-colon
 
     public static Test Default {
         [Tag]
